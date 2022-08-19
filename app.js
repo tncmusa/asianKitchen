@@ -95,10 +95,24 @@ function removeDuplicates(tofilter, prop) //filter array for duplicates, thx to 
   });
 }
 
-function addButtons()
+function addAllButtons()
 { 
   let newArray = removeDuplicates(menu, "category");
-  console.log(newArray);
+  let buttonContainer = document.querySelector(".btn-container");
+  let buttonItem = document.createElement("button");
+  buttonItem.classList.add("btn-item");
+  buttonItem.innerText = "All";
+  buttonItem.onclick = addAllItems;
+  //add buttonItem to buttonContainer
+  buttonContainer.appendChild(buttonItem);
+  newArray.forEach(element => {
+    buttonItem = document.createElement("button");
+    buttonItem.classList.add("btn-item");
+    buttonItem.innerText = element.category;
+    buttonItem.onclick = () => addAllItemsByCategory(element.category);
+    //add buttonItem to buttonContainer
+    buttonContainer.appendChild(buttonItem);
+  });
 }
 
 let allMenuItemsArray = [];
@@ -139,3 +153,24 @@ function addMenuItem(item)
   menuTextDiv.innerText = item.desc;
   menuInfoDiv.appendChild(menuTextDiv);
 }
+
+function removeAllItems()
+{
+  allMenuItemsArray.forEach((value) => value.remove(value));
+  allMenuItemsArray = [];
+}
+
+function addAllItemsByCategory(category)
+{
+  removeAllItems();
+  let filteredArray = menu.filter((value) => category == value.category);
+  filteredArray.forEach((value) => addMenuItem(value));
+}
+
+function addAllItems()
+{
+  removeAllItems();
+  menu.forEach((value) => addMenuItem(value));
+}
+
+addAllButtons();
