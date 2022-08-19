@@ -94,6 +94,6 @@ function addMenuItem(item)
   //add itemDiv to menuDiv
   itemDiv.classList.add("menu-items", "col-lg-6", "col-sm-12"); 
   menuDiv.appendChild(itemDiv);
-
+  
 
 }
