@@ -87,10 +87,27 @@ function insertAfter(newNode, existingNode) {
   existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
 
+function removeDuplicates(tofilter, prop) //filter array for duplicates, thx to https://stackoverflow.com/questions/30735465/how-can-i-check-if-the-array-of-objects-have-duplicate-property-values
+{
+  let seen = new Set();
+  return tofilter.filter(function(currentObject) {
+    return seen.size !== seen.add(currentObject[prop]).size;
+  });
+}
+
+function addButtons()
+{ 
+  let newArray = removeDuplicates(menu, "category");
+  console.log(newArray);
+}
+
+let allMenuItemsArray = [];
+
 function addMenuItem(item)
 {
   let menuDiv = document.querySelector(".section-center");
   let itemDiv = document.createElement("div");
+  allMenuItemsArray.push(itemDiv); //add this element to allMenuItemsArray
   //add itemDiv to menuDiv
   itemDiv.classList.add("menu-items", "col-lg-6", "col-sm-12"); 
   menuDiv.appendChild(itemDiv);
@@ -122,5 +139,3 @@ function addMenuItem(item)
   menuTextDiv.innerText = item.desc;
   menuInfoDiv.appendChild(menuTextDiv);
 }
-
-addMenuItem(menu[0]);
