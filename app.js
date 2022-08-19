@@ -94,6 +94,33 @@ function addMenuItem(item)
   //add itemDiv to menuDiv
   itemDiv.classList.add("menu-items", "col-lg-6", "col-sm-12"); 
   menuDiv.appendChild(itemDiv);
-  
-
+  //add img to itemDiv
+  let imgItem = document.createElement("img");
+  imgItem.src = item.img;
+  imgItem.classList.add("photo");
+  itemDiv.appendChild(imgItem);
+  //add menuInfoDiv to itemDiv
+  let menuInfoDiv = document.createElement("div");
+  menuInfoDiv.classList.add("menu-info");
+  itemDiv.appendChild(menuInfoDiv);
+  //add menuTitleDiv to menuInfoDiv
+  let menuTitleDiv = document.createElement("div");
+  menuTitleDiv.classList.add("menu-title");
+  menuInfoDiv.appendChild(menuTitleDiv);
+  //add h4 title to menuTitleDiv
+  let h4Title = document.createElement("h4");
+  h4Title.innerText = item.title;
+  menuTitleDiv.appendChild(h4Title);
+  //add h4 price to menuTitleDiv
+  let h4Price = document.createElement("h4");
+  h4Price.innerText = `${item.price}`;
+  h4Price.classList.add("menu-price");
+  menuTitleDiv.appendChild(h4Price);
+  //add menuTextDiv to menuInfoDiv
+  let menuTextDiv = document.createElement("div");
+  menuTextDiv.classList.add("menu-text");
+  menuTextDiv.innerText = item.desc;
+  menuInfoDiv.appendChild(menuTextDiv);
 }
+
+addMenuItem(menu[0]);
