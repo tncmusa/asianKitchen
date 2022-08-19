@@ -81,3 +81,19 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+//thx to https://www.javascripttutorial.net/javascript-dom/javascript-insertafter/
+function insertAfter(newNode, existingNode) { 
+  existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+function addMenuItem(item)
+{
+  let menuDiv = document.querySelector(".section-center");
+  let itemDiv = document.createElement("div");
+  //add itemDiv to menuDiv
+  itemDiv.classList.add("menu-items", "col-lg-6", "col-sm-12"); 
+  menuDiv.appendChild(itemDiv);
+
+
+}
